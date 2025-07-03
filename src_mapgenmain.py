@@ -661,7 +661,7 @@ class Landmass:
         if len(self.boundary) == 0:
             return
         root = random.choice(self.boundary)
-        riverLen = random.randint(length/4,length)
+        riverLen = random.randint(int(length/4),int(length))
         newRiver = River(root,riverLen,self)
         self.rivers.append(newRiver)
     def cullStreams(self,minLen):
@@ -4796,7 +4796,7 @@ print("Triangulating...")
 from scipy.spatial import Delaunay
 triangulation = Delaunay(npFloatAtlas)
 
-trisList = triangulation.vertices
+trisList = triangulation.simplices
 trisVerts = triangulation.points
 print("Relaxing points...")
 relaxLloyd(npFloatAtlas,2)
